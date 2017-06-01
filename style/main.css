@@ -1,0 +1,18 @@
+body {
+    padding: 50px 100px;
+}
+
+i.fa-plane {
+    background-color: #eace5e;
+    color: white;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.bordered {
+    border-color: rgba(240, 232, 232, 0.1);
+}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Starting Angular</title>
+    <!--angular-->
+    <script src="https://code.angularjs.org/1.5.8/angular.js"></script>
+    <!--site-->
+    <script src="js/app.js"></script>
+    <!-- css -->
+    <!-- load bootstrap and some simple css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style/main.css">
+</head>
+<!-- Notice here the ng-app references our 'weatherApp' module -->
+
+<body ng-app='weatherApp'>
+    <!-- Reference the application level controller for the title model. -->
+    <div ng-controller="AppCtrl" ng-model="title">
+        <h1>{{ title }}</h1>
+
+        <button type="button" ng-click="decsSort()">
+            <i class="fa fa-sort-alpha-desc"></i>
+        </button>
+
+        <button type="button" ng-click="ascSort()">
+            <i class="fa fa-sort-alpha-asc"></i>
+        </button>
+
+        <div ng-repeat="element in forecast | orderBy : 'cityName' : sortValue">
+            <i class="fa fa-plane" aria-hidden="true"></i>
+            <label ng-click="showDetails(element)">
+                {{ element['cityName'] }}
+            </label>
+        </div>
+
+        <div ng-if="selectedWeather">
+            <h1>{{ selectedWeather.cityName }}</h1>
+
+            <h4>{{ selectedWeather.text }}</h4>
+
+            <h4>
+                <span>High: {{ high | number : 0 }}</span> &nbsp;
+                <span>Low: {{ low | number : 0 }}</span>
+            </h4>
+
+            <input ng-click="toggleUnit()" ng-model="unit" type="radio" name="celsiusBtn" value="celsius"> C
+
+            <input ng-click="toggleUnit()" ng-model="unit" type="radio" name="fahrenheitBtn" value="fahrenheit"> F
+        </div>
+    </div>
+</body>
+
+</html>
